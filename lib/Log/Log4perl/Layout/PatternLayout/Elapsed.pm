@@ -36,9 +36,14 @@ Through Perl code (why would you do that?):
 
 =head1 DESCRIPTION
 
+B<NOTE>: L<Log::Log4perl> 1.25 includes already the functionality of this module
+in L<Log::Log4perl::Layout::PatternLayout>. It's strongly suggested that you use
+Log::Log4perl's implementation as it fixes some consistency issues when mixing
+%r and %R in the same logging message.
+
 This layout adds the placeholder C<%R>, which is used to display the time
-elapsed since the last logging event. In the case of the first logging event,
-the time elapsed since the beginning of the application will be used.
+elapsed between two consecutive logging events. In the case of the first logging
+event the time elapsed since the beginning of the application will be displayed.
 
 This module is a sub class of L<Log::Log4perl::Layout::PatternLayout>, which
 means that it implements that same formats and can used the same placeholders.
@@ -56,7 +61,7 @@ placeholder:
 
 This module is implemented in order to ensure that each appender will track it's
 own elapsed time. This way the time displayed is truly the time spent between
-two consecutive log events for each appender. Thus if different threshold are
+two consecutive log events for each appender. Thus if different thresholds are
 applied to two appenders logging in the same application it's normal if they
 both show different values for the time elapsed for a same log statement. This
 is because the previous logging message might have not been issued at the same
@@ -129,14 +134,15 @@ use 5.006;
 use strict;
 use warnings;
 
-#use Log::Log4perl::Util;
+use Log::Log4perl::Util;
 
 use base qw(Log::Log4perl::Layout::PatternLayout);
 
 # Indicates if Time::HiRes is available
-my $TIME_HIRES_AVAILABLE = $Log::Log4perl::Layout::PatternLayout::TIME_HIRES_AVAILABLE;
+my $TIME_HIRES_AVAILABLE = Log::Log4perl::Util::module_available('Time::HiRes');
 
-our $VERSION = '0.02';
+
+our $VERSION = '0.03';
 
 =head2 new
 
@@ -224,13 +230,16 @@ sub _to_milliseconds {
 =head1 BUGS
 
 If %d, %r or %R are used simultaneously it could happen that the values don't
-match withing a single logging statement. This is because Log4perl computes the
+match within a single logging statement. This is because Log4perl computes the
 current time for each placeholder and the time can change between the different
-invocations of the clock.
+invocations of the clock's time.
+
+B<NOTE>: This bugs are fixed in Log::Log4perl 1.25.
 
 =head1 SEE ALSO
 
-L<Log::Log4perl::Layout::PatternLayout>.
+L<Log::Log4perl::Layout::PatternLayout> distributed with Log::Log4perl 1.25 or
+higher.
 
 =head1 AUTHOR
 

@@ -11,9 +11,11 @@ inc/Module/Install/WriteAll.pm
 lib/Log/Log4perl/Layout/PatternLayout/Elapsed.pm
 Makefile.PL
 MANIFEST
+MANIFEST.SKIP
 META.yml
 README
 t/00-distribution.t
 t/00-pod-coverage.t
 t/00-signature.t
-t/01-format.t
+t/01-format-hires.t
+t/01-format-time.t
