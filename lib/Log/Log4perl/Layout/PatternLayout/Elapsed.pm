@@ -39,7 +39,9 @@ Through Perl code (why would you do that?):
 B<NOTE>: L<Log::Log4perl> 1.25 includes already the functionality of this module
 in L<Log::Log4perl::Layout::PatternLayout>. It's strongly suggested that you use
 Log::Log4perl's implementation as it fixes some consistency issues when mixing
-%r and %R in the same logging message.
+%r and %R in the same logging message. If you can't upgrade to Log::Log4perl
+1.25 or higher then you should be able to use this module and enjoy the same
+functionality.
 
 This layout adds the placeholder C<%R>, which is used to display the time
 elapsed between two consecutive logging events. In the case of the first logging
@@ -142,7 +144,7 @@ use base qw(Log::Log4perl::Layout::PatternLayout);
 my $TIME_HIRES_AVAILABLE = Log::Log4perl::Util::module_available('Time::HiRes');
 
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 =head2 new
 
