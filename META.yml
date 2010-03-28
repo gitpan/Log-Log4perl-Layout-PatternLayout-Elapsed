@@ -3,11 +3,14 @@ abstract: 'Logs the time elapsed between the last log event'
 author:
   - 'Emmanuel Rodriguez, <emmanuel.rodriguez@gmail.com>.'
 build_requires:
+  ExtUtils::MakeMaker: 6.42
   Log::Log4perl::Appender::TestBuffer: 0
   Test::More: 0
   Test::Pod: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.77'
+generated_by: 'Module::Install version 0.91'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -15,9 +18,9 @@ meta-spec:
 name: Log-Log4perl-Layout-PatternLayout-Elapsed
 no_index:
   directory:
+    - examples
     - inc
     - t
-    - examples
 recommends:
   Time::HiRes: 0
 requires:
@@ -25,4 +28,4 @@ requires:
   perl: 5.6.0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.04
+version: undef

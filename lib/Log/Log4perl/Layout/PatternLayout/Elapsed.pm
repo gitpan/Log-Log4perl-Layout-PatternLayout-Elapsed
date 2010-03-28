@@ -136,15 +136,21 @@ use 5.006;
 use strict;
 use warnings;
 
+use Log::Log4perl;
 use Log::Log4perl::Util;
 
 use base qw(Log::Log4perl::Layout::PatternLayout);
+
+# This functonality was merged in Log4perl 1.25 and causes this module to clash
+# with those releases. If the code is already there then we simply skip our
+# current implementation.
+my $IS_MERGED = ($Log::Log4perl::VERSION >= 1.25);
 
 # Indicates if Time::HiRes is available
 my $TIME_HIRES_AVAILABLE = Log::Log4perl::Util::module_available('Time::HiRes');
 
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head2 new
 
@@ -154,6 +160,9 @@ by Log4perl.
 =cut
 
 sub new {
+	# If the code is already merged in Log4perl we use that version
+	return Log::Log4perl::Layout::PatternLayout->new(@_) if $IS_MERGED;
+
 	my $type = shift;
 	
 	#
@@ -236,7 +245,7 @@ match within a single logging statement. This is because Log4perl computes the
 current time for each placeholder and the time can change between the different
 invocations of the clock's time.
 
-B<NOTE>: This bugs are fixed in Log::Log4perl 1.25.
+B<NOTE>: This bugs is fixed in Log::Log4perl 1.25.
 
 =head1 SEE ALSO
 
