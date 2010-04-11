@@ -1,31 +1,25 @@
 ---
-abstract: 'Logs the time elapsed between the last log event'
-author:
-  - 'Emmanuel Rodriguez, <emmanuel.rodriguez@gmail.com>.'
-build_requires:
-  ExtUtils::MakeMaker: 6.42
-  Log::Log4perl::Appender::TestBuffer: 0
-  Test::More: 0
-  Test::Pod: 0
-configure_requires:
-  ExtUtils::MakeMaker: 6.42
-distribution_type: module
-generated_by: 'Module::Install version 0.91'
-license: perl
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
 name: Log-Log4perl-Layout-PatternLayout-Elapsed
-no_index:
-  directory:
-    - examples
-    - inc
-    - t
-recommends:
-  Time::HiRes: 0
-requires:
-  Log::Log4perl::Layout::PatternLayout: 0
-  perl: 5.6.0
+version: 0.06
+author:
+  - 'Emmanuel Rodriguez, E<lt>emmanuel.rodriguez@gmail.comE<gt>.'
+abstract: Logs the time elapsed between the last log event
+license: perl
 resources:
   license: http://dev.perl.org/licenses/
-version: undef
+requires:
+  Log::Log4perl::Layout::PatternLayout: 0
+build_requires:
+  Log::Log4perl::Appender::TestBuffer: 0
+  Test::More: 0
+recommends:
+  Time::HiRes: 0
+dynamic_config: 0
+provides:
+  Log::Log4perl::Layout::PatternLayout::Elapsed:
+    file: lib/Log/Log4perl/Layout/PatternLayout/Elapsed.pm
+    version: 0.06
+generated_by: Module::Build version 0.280801
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2

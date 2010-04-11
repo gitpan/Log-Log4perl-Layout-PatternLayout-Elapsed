@@ -1,21 +1,13 @@
+Build.PL
 Changes
 examples/sample.pl
-inc/Module/Install.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/Log/Log4perl/Layout/PatternLayout/Elapsed.pm
-Makefile.PL
-MANIFEST
+MANIFEST			This list of files
 MANIFEST.SKIP
 META.yml
 README
-t/00-distribution.t
-t/00-pod-coverage.t
-t/00-signature.t
 t/01-format-hires.t
 t/01-format-time.t
+xt/00-distribution.t
+xt/00-pod-coverage.t
+xt/00-signature.t
